@@ -8,7 +8,9 @@ System_Updates() {
 
 
         else
-                yes | pkg update && freebsd-update fetch && freebsd-update install 
+                freebsd-update fetch 
+                freebsd-update install 
+                pkg update
                 printf "System will Reboot in 3 seconds"
                 sleep 3
                 reboot 
