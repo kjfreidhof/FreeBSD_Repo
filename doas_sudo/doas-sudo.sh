@@ -1,8 +1,10 @@
 #!/usr/bin/env sh 
+doas_path="/usr/local/etc"
 Path_pkg="/usr/sbin/pkg"
 install_doas() {
     if [ -f "$Path_pkg" ]; then
         yes | pkg install doas
+        cp doas.conf "$doas_path"
         exit 0
 
     else 
