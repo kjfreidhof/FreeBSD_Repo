@@ -1,4 +1,7 @@
 #!/usr/bin/env sh 
+# con="continue"
+local_dir="/usr/local/etc/pkgs/repos"
+
 Path_pkg="/usr/sbin/pkg"
 System_Updates() {
     if [ -f "$Path_pkg" ]; then
@@ -8,23 +11,22 @@ System_Updates() {
 
 
         else
-                freebsd-update fetch 
-                freebsd-update install 
-                pkg update
-                printf "System will Reboot in 3 seconds"
-                sleep 3
-                reboot 
-            
+             mkdir -p "$local_dir"
+             cp FreeBSD.conf "$local_dir"
+             freebsd-update fetch 
+             freebsd-update install 
+             pkg update
+             printf "System will Reboot in 3 seconds"
+             sleep 3
+             reboot 
+             exit 0
 
 
-        fi 
+        fi
 
 
+    fi
 
-    else
-        exit 1 
-
-    fi 
 }
 
 System_Updates
